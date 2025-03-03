@@ -1,5 +1,7 @@
 # CDC Oracle x Debezium x Kafka
 
+Link para o artigo: [Medium](https://medium.com/@darioajr/construindo-um-pipeline-cdc-com-oracle-xe-kafka-e-podman-um-guia-pr%C3%A1tico-2ce0a7e00d68).
+
 ## Containers
 
 ### Criar a rede
