@@ -81,10 +81,9 @@ chmod +x register_connector.sh
 ```bash 
 podman exec -it oracle-xe sqlplus C##cdc_user/cdc_password@localhost:1521/XEPDB1 @/opt/oracle/scripts/create-table.sql
 ```
-
-#### Database UI
+### Inserindo novos dados
 ```bash
-podman run -d --name adminer --network cdc-network -p 8081:8080 -e ADMINER_DEFAULT_SERVER=oracle-xe -e ADMINER_DESIGN=nette docker.io/library/adminer:latest
+podman exec -it oracle-xe sqlplus sys/oracle@localhost:1521/XEPDB1 as sysdba -c "INSERT INTO C##cdc_user.table_example (id, name) VALUES (2, 'Teste 2'); COMMIT;"
 ```
 
 ### Verificar a replicação no Kafka
@@ -96,3 +95,4 @@ podman exec -it kafka kafka-console-consumer --bootstrap-server kafka:9092 --top
 podman run -d --name kafka-ui --network cdc-network -p 8080:8080 -e KAFKA_CLUSTERS_0_NAME=cdc-cluster -e KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092 provectuslabs/kafka-ui:latest
 ```
 
+![Kafka-UI](https://github.com/darioajr/cdc-oracle-kafka/raw/main/docs/kafka.png "Kafka-UI")
