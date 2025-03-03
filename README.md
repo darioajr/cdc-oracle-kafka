@@ -1,4 +1,4 @@
-# POC CDC Oracle x Debezium x Kafka
+# CDC Oracle x Debezium x Kafka
 
 ## Containers
 
